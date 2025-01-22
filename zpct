@@ -17,6 +17,17 @@ versi="v1.0"
 pembuat="Rofi (Fixploit03)"
 github="https://github.com/fixploit03/zpct"
 
+# Fungsi untuk mengecek sistem operasi (DONE)
+function cek_os(){
+	os=$(lsb_release  -i | awk '{print $3}')
+	if [[ "${os}" == "Kali" ]]; then
+		:
+	else
+		echo -e "${m}[-] ${p}Script ini hanya dapat dijalankan di sistem operasi Kali Linux.${r}"
+		exit 1
+	fi
+}
+
 # Fungsi untuk mengecek root (DONE)
 function cek_root(){
 	if [[ $EUID -ne 0 ]]; then
@@ -623,6 +634,7 @@ function crack_file_zip(){
 
 
 # run script (DONE)
+cek_os
 cek_root
 cek_alat
 banner_script
