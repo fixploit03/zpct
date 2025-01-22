@@ -176,13 +176,7 @@ function cek_enkripsi_file_zip(){
 function buat_folder_file_hash(){
 	nama_folder_file_hash="file_hash"
 	if [[ ! -d "${nama_folder_file_hash}" ]]; then
-		echo -e "${b}[*] ${p}Membuat folder '${b}${nama_folder_file_hash}${p}'...${r}"
 		mkdir "${nama_folder_file_hash}"
-		if [[ $? -eq 0 ]]; then
-			echo -e "${h}[+] ${p}Folder '${h}${nama_folder_file_hash}${p}' berhasil dibuat.${r}"
-		else
-			echo -e "${m}[-] ${p}Folder '${m}${nama_folder_file_hash}${p}' gagal dibuat.${r}"
-		fi
 	fi
 }
 
@@ -357,11 +351,13 @@ function start_attack(){
 # Fungsi untuk membuat folder untuk menyimpan hasil cracking (DONE)
 function buat_folder_hasil(){
 	nama_folder_hasil="hasil_cracking"
-	path_hasil="${nama_folder_hasil}/${nama_file_zip}.txt"
-	real_path_folder_hasil=$(realpath "${path_hasil}")
+
 	if [[ ! -d "${nama_folder_hasil}" ]]; then
 		mkdir "${nama_folder_hasil}"
 	fi
+
+	path_hasil="${nama_folder_hasil}/${nama_file_zip}.txt"
+	real_path_folder_hasil=$(realpath "${path_hasil}")
 }
 
 # Fungsi untuk menjalankan alat John The Ripper (DONE)
