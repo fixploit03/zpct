@@ -19,7 +19,7 @@ git clone https://github.com/fixploit03/zpct.git
 cd zpct
 make
 cp zip2hashcat /usr/local/sbin
-chmod +x cpzt
-cp cpzt /usr/local/sbin
+chmod +x zpct
+cp zpct /usr/local/sbin
 
 ----------------------
