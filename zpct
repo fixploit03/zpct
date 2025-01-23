@@ -77,7 +77,7 @@ function banner_script(){
 	echo -e "${p}|    ${c}|\________\ \__\    \ \_______\  \ \__\ ${p}|${r}"
 	echo -e "${p}|     ${c}\|_______|\|__|     \|_______|   \|__| ${p}|${r}"
 	echo -e "${p}|                                       ${h}${versi} ${p}|${r}"
-	echo -e "${p}|                       ${h}By Rofi (Fixploit03) ${p}|${r}"
+	echo -e "${p}|                       ${h}By ${pembuat} ${p}|${r}"
 	echo -e "${p}|         ${h}${github} ${p}|${r}"
 	echo -e "${p}+--------------------------------------------+${r}"
 	echo ""
