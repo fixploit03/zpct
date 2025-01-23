@@ -279,7 +279,7 @@ function menu_pilih_teknik(){
 function masukkan_file_wordlist(){
 	while true; do
 		read -r -p $'\e[0;34m[#] \e[0;37mMasukkan nama file Wordlist: ' file_wordlist
-		file_wordlist=$(echo "${isi_file_zip}" | sed -e "s/^[ \t]*//" -e "s/[ \t]*$//" -e "s/^['\"]//" -e "s/['\"]$//")
+		file_wordlist=$(echo "${file_wordlist}" | sed -e "s/^[ \t]*//" -e "s/[ \t]*$//" -e "s/^['\"]//" -e "s/['\"]$//")
 		if [[ -z "${file_wordlist}" ]]; then
 			echo -e "${m}[-] ${p}Nama file Wordlist tidak boleh kosong.${r}"
 			continue
