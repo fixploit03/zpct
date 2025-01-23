@@ -14,7 +14,7 @@ r="\e[0m"
 
 # Tentang (DONE)
 versi="v1.1"
-pembuat="Rofi (Fixploit03)"
+pembuat="${h}Rofi ${p}(${h}Fixploit03${p})${r}"
 github="https://github.com/fixploit03/zpct"
 
 # Fungsi untuk mengecek sistem operasi (DONE) *
