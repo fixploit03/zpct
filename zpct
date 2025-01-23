@@ -34,7 +34,7 @@ trap 'echo -e "\n${p}[${m}-${p}] KeyboardInterrupt${r}"; exit 1' SIGINT
 # Fungsi untuk mengecek alat (DONE) *
 function cek_alat(){
 	daftar_alat=(
-                "lsb-release"
+                "lsb_release"
 		"john"
 		"hashcat"
 		"zipinfo"
