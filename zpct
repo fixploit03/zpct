@@ -13,7 +13,7 @@ p="\e[0;37m"
 r="\e[0m"
 
 # Tentang (DONE)
-versi="v1.2"
+versi="v1.1"
 pembuat="Rofi (Fixploit03)"
 github="https://github.com/fixploit03/zpct"
 
