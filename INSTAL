@@ -18,8 +18,8 @@ apt-get install git
 git clone https://github.com/fixploit03/zpct.git
 cd zpct
 make
-cp zip2hashcat /usr/local/sbin
+cp zip2hashcat /usr/local/bin
 chmod +x zpct
-cp zpct /usr/local/sbin
+cp zpct /usr/local/bin
 
 ----------------------
