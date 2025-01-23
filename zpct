@@ -309,7 +309,7 @@ function menentukan_panjang_kata_sandi(){
 
 	# Memasukkan panjang minimal kata sandi
 	while true; do
-		read -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan panjang minimal kata sandi: ' min
+		read -r -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan panjang minimal kata sandi: ' min
 		if [[ -z "${min}" ]]; then
 			echo -e "${p}[${m}-${p}] Panjang minimal kata sandi tidak boleh kosong.${r}"
 			continue
@@ -331,7 +331,7 @@ function menentukan_panjang_kata_sandi(){
 
 	# Memasukkan panjang maksimal kata sandi
 	while true; do
-		read -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan panjang maksimal kata sandi: ' maks
+		read -r -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan panjang maksimal kata sandi: ' maks
 		if [[ -z "${maks}" ]]; then
 			echo -e "${p}[${m}-${p}] Panjang maksimal kata sandi tidak boleh kosong.${r}"
 			continue
@@ -365,7 +365,7 @@ function menentukan_pola_mask(){
 	echo ""
 
 	while true; do
-		read -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan pola mask (\e[0;33m?l?u?d?s?a\e[0;37m): ' pola_mask
+		read -r -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan pola mask (\e[0;33m?l?u?d?s?a\e[0;37m): ' pola_mask
 
 		if [[ -z "${pola_mask}" ]]; then
 			echo -e "${p}[${m}-${p}] Pola mask tidak boleh kosong.${r}"
@@ -384,7 +384,7 @@ function menentukan_pola_mask(){
 # Fungsi untuk menentukan kombinasi karakter (DONE) *
 function menentukan_kombinasi_karakter(){
 	while true; do
-		read -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan kombinasi karakter (\e[0;33maA1$\e[0;37m): ' kombinasi
+		read -r -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan kombinasi karakter (\e[0;33maA1$\e[0;37m): ' kombinasi
 		if [[ -z "${kombinasi}" ]]; then
 			echo -e "${p}[${m}-${p}] Kombinasi karakter tidak boleh kosong.${r}"
 			continue
