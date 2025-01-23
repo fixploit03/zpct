@@ -14,6 +14,7 @@ apt-get install unzip
 apt-get install p7zip-full
 apt-get install gcc
 apt-get install make
+apt-get install lsb-release
 apt-get install git
 git clone https://github.com/fixploit03/zpct.git
 cd zpct
