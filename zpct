@@ -28,14 +28,6 @@ function cek_os(){
 	fi
 }
 
-# Fungsi untuk mengecek root (DONE)
-function cek_root(){
-	if [[ $EUID -ne 0 ]]; then
-		echo -e "${m}[-] ${p}Script ini harus dijalankan sebagi root.${r}"
-		exit 1
-	fi
-}
-
 # Error handling KeyboardInterrupt
 trap 'echo -e "\n${m}[-] ${p}KeyboardInterrupt${r}"; exit 1' SIGINT
 
@@ -635,7 +627,6 @@ function crack_file_zip(){
 
 # run script (DONE)
 cek_os
-cek_root
 cek_alat
 banner_script
 masukkan_file_zip
