@@ -104,6 +104,7 @@ function instal_zpct(){
 
 	source=zpct
 
+ 	chmod +x "${source}"
 	cp "${source}" "${target}"
 
 	if [[ "${#gagal[@]}" -eq 0 ]]; then
