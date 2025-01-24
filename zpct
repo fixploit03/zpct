@@ -100,12 +100,12 @@ function masukkan_file_zip(){
 						echo -e "${p}[${m}-${p}] File ZIP tidak valid atau rusak.${r}"
 						continue
 					else
-						if [[ $(zipinfo -v "${file_zip}" 2>&1 | awk '{print $4}' | grep -i 'not encrypted') ]]; then
-							echo -e "${p}[${m}-${p}] File ZIP tidak terenkripsi.${r}"
-							continue
-						else
+						if [[ $(zipinfo -v "${file_zip}" 2>&1 | grep -i 'file security status: *encrypted') ]]; then
 							echo -e "${p}[${h}+${p}] File ZIP ditemukan.${r}"
 							break
+						else
+							echo -e "${p}[${m}-${p}] File ZIP tidak terenkripsi.${r}"
+							continue
 						fi
 					fi
 				else
