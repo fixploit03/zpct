@@ -66,6 +66,7 @@ function instal_tools(){
 	daftar_tools=(
 		"hashstation/zip2hashcat"
 		"fixploit03/combinator"
+		"fixploit03/toggle-case"
 		"hashcat/princeprocessor/"
 	)
 
@@ -89,6 +90,11 @@ function instal_tools(){
 			cp combinator "${target}"
 			cd ..
 		elif [[ "${instal_tools}" == "${daftar_tools[2]}" ]]; then
+			cd toggle-case
+			make
+			cp toggle-case "${target}"
+			cd ..
+		elif [[ "${instal_tools}" == "${daftar_tools[3]}" ]]; then
 			cd princeprocessor/src
 			make
 			cp pp64.bin "${target}/princeprocessor"

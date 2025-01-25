@@ -13,7 +13,7 @@ p="\e[0;37m"
 r="\e[0m"
 
 # Tentang (DONE)
-versi="v1.3"
+versi="v1.4"
 pembuat="${h}Rofi ${p}(${h}Fixploit03${p})${r}"
 github="https://github.com/fixploit03/zpct"
 
@@ -36,6 +36,7 @@ function cek_alat(){
 	daftar_alat=(
                 "lsb_release"
 		"combinator"
+		"toggle-case"
 		"john"
 		"hashcat"
 		"zipinfo"
@@ -221,8 +222,8 @@ function ekstrak_hash_file_zip(){
 	if [[ "${teknik_ekstrak_hash}" == "1" ]]; then
 		echo -e "${p}[${b}*${p}] Mengecek isi file ZIP...${r}"
 		echo ""
-		echo -e "${p}Daftar Isi File ZIP:${r}"
-		echo ""
+		echo -e "${k}Daftar Isi File ZIP${p}:${r}"
+		echo -e "${p}--------------------${r}"
 		lihat_isi_file_zip=$(unzip -l "${file_zip}")
 		echo -e "${p}${lihat_isi_file_zip}${r}"
 		echo ""
@@ -305,6 +306,7 @@ function menu_pilih_teknik(){
 	echo -e "${p}[${k}5${p}] Prince Attack${r}"
 	echo -e "${p}[${k}6${p}] Hybrid Attack${r}"
 	echo -e "${p}[${k}7${p}] Subsets Attack${r}"
+	echo -e "${p}[${k}8${p}] Toggle Case Attack${r}"
 	echo ""
 	while true; do
 		read -r -p $'\e[0;37m[\e[0;34m#\e[0;37m] Pilih teknik: ' pilih_teknik
@@ -312,7 +314,7 @@ function menu_pilih_teknik(){
 			echo -e "${p}[${m}-${p}] Teknik tidak boleh kosong.${r}"
 			continue
 		else
-			if [[ "${pilih_teknik}" != "1" && "${pilih_teknik}" != "2" && "${pilih_teknik}" != "3" && "${pilih_teknik}" != "4" && "${pilih_teknik}" != "5" && "${pilih_teknik}" != "6" && "${pilih_teknik}" != "7" ]]; then
+			if [[ "${pilih_teknik}" != "1" && "${pilih_teknik}" != "2" && "${pilih_teknik}" != "3" && "${pilih_teknik}" != "4" && "${pilih_teknik}" != "5" && "${pilih_teknik}" != "6" && "${pilih_teknik}" != "7" && "${pilih_teknik}" != "8" ]]; then
 				echo -e "${p}[${m}-${p}] Teknik tidak tersedia.${r}"
 				continue
 			else
@@ -884,6 +886,59 @@ function run_john_the_ripper(){
 			echo ""
 			rm "pot.txt"
 		fi
+	elif [[ "${pilih_teknik}" == "8" ]]; then
+		masukkan_file_wordlist
+		start_attack
+		tanggal=$(date +"%d-%m-%Y")
+		jam=$(date +"%H:%M:%S")
+		waktu_mulai="/${tanggal}/ ${jam}"
+		echo ""
+		echo -e "${p}[${b}*${p}] Dimulai pada: ${b}${waktu_mulai}${r}"
+		echo ""
+		echo -e "${p}[${b}*${p}] Mengcrack kata sandi file ZIP...${r}"
+		echo -e "${p}[${b}*${p}] Menjalankan alat John The Ripper...${r}"
+		echo ""
+		toggle-case "${file_wordlist}" | john --stdin --format="${format}" --pot="pot.txt" --verbosity=6 --progress-every=1 "${path_file_hash}"
+		john --format="${format}" --pot="pot.txt" --show "${path_file_hash}"
+		if [[ -f "pot.txt" ]]; then
+			if [[ $(grep -o ':' "pot.txt") ]]; then
+				buat_folder_hasil
+				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				echo ""
+				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
+				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
+				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
+				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
+				tanggal=$(date +"%d-%m-%Y")
+				jam=$(date +"%H:%M:%S")
+				waktu_selesai="/${tanggal}/ ${jam}"
+				echo ""
+				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
+				echo ""
+				rm "pot.txt"
+			else
+				echo ""
+				echo -e "${p}[${m}-${p}] Kata sandi file ZIP tidak ditemukan.${r}"
+				tanggal=$(date +"%d-%m-%Y")
+				jam=$(date +"%H:%M:%S")
+				waktu_selesai="/${tanggal}/ ${jam}"
+				echo ""
+				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
+				echo ""
+				rm "pot.txt"
+			fi
+		else
+			echo ""
+			echo -e "${p}[${m}-${p}] Kata sandi file file ZIP tidak ditemukan.${r}"
+			tanggal=$(date +"%d-%m-%Y")
+			jam=$(date +"%H:%M:%S")
+			waktu_selesai="/${tanggal}/ ${jam}"
+			echo ""
+			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
+			echo ""
+			rm "pot.txt"
+		fi
 
 	fi
 }
@@ -1262,6 +1317,59 @@ function run_hashcat(){
 			echo ""
 			rm "pot.txt"
 		fi
+	elif [[ "${pilih_teknik}" == "8" ]]; then
+		masukkan_file_wordlist
+		start_attack
+		tanggal=$(date +"%d-%m-%Y")
+		jam=$(date +"%H:%M:%S")
+		waktu_mulai="/${tanggal}/ ${jam}"
+		echo ""
+		echo -e "${p}[${b}*${p}] Dimulai pada: ${b}${waktu_mulai}${r}"
+		echo ""
+		echo -e "${p}[${b}*${p}] Mengcrack kata sandi file ZIP...${r}"
+		echo -e "${p}[${b}*${p}] Menjalankan alat Hashcat...${r}"
+		echo ""
+		toggle-case "${file_wordlist}" | hashcat -a 0 -m "${mode_hashcat}" "${path_file_hash}" --status --status-timer=1 --potfile-path "pot.txt"
+		if [[ -f "pot.txt" ]]; then
+			if [[ $(grep -o ':' "pot.txt") ]]; then
+				buat_folder_hasil
+				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				echo ""
+				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
+				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
+				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
+				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
+				tanggal=$(date +"%d-%m-%Y")
+				jam=$(date +"%H:%M:%S")
+				waktu_selesai="/${tanggal}/ ${jam}"
+				echo ""
+				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
+				echo ""
+				rm "pot.txt"
+			else
+				echo ""
+				echo -e "${p}[${m}-${p}] Kata sandi file ZIP tidak ditemukan.${r}"
+				tanggal=$(date +"%d-%m-%Y")
+				jam=$(date +"%H:%M:%S")
+				waktu_selesai="/${tanggal}/ ${jam}"
+				echo ""
+				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
+				echo ""
+				rm "pot.txt"
+			fi
+		else
+			echo ""
+			echo -e "${p}[${m}-${p}] Kata sandi file file ZIP tidak ditemukan.${r}"
+			tanggal=$(date +"%d-%m-%Y")
+			jam=$(date +"%H:%M:%S")
+			waktu_selesai="/${tanggal}/ ${jam}"
+			echo ""
+			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
+			echo ""
+			rm "pot.txt"
+		fi
+
 	fi
 }
 
