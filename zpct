@@ -346,10 +346,6 @@ function masukkan_file_wordlist(){
 			echo -e "${p}[${b}*${p}] Mengecek file Wordlist...${r}"
 			if [[ -f "${file_wordlist}" ]]; then
 				echo -e "${p}[${h}+${p}] File Wordlist ditemukan.${r}"
-				if [[ "${pilih_teknik}" == "1" ]]; then
-					jumlah_kata_sandi=$(wc "${file_wordlist}" | awk '{print $1}')
-					echo -e "${p}[${h}+${p}] Jumlah kata sandi yang ingin dicoba: ${h}${jumlah_kata_sandi}${r}"
-				fi
 				break
 			else
 				echo -e "${p}[${m}-${p}] File Wordlist tidak ditemukan.${r}"
@@ -483,9 +479,6 @@ function masukkan_file_wordlist_2(){
 			echo -e "${p}[${b}*${p}] Mengecek file Wordlist ke-2...${r}"
 			if [[ -f "${file_wordlist_2}" ]]; then
 				echo -e "${p}[${h}+${p}] File Wordlist ke-2 ditemukan.${r}"
-				jumlah_kata_sandi_2=$(wc "${file_wordlist_2}" | awk '{print $1}')
-				jumlah_gabungan_kata_sandi=$((jumlah_kata_sandi_1 * jumlah_kata_sandi_2))
-				echo -e "${p}[${h}+${p}] Jumlah kata sandi yang ingin dicoba: ${h}${jumlah_gabungan_kata_sandi}${r}"
 				break
 			else
 				echo -e "${p}[${m}-${p}] File Wordlist ke-2 tidak ditemukan.${r}"
