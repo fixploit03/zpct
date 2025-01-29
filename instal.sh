@@ -50,6 +50,8 @@ function instal_dependensi(){
 		"gcc"
 		"make"
 		"lsb-release"
+		"wget"
+		"gzip"
 		"git"
 	)
 
@@ -103,6 +105,34 @@ function instal_tools(){
 	done
 }
 
+function download_rockyou(){
+	url_rockyou="https://github.com/praetorian-inc/Hob0Rules/raw/refs/heads/master/wordlists/rockyou.txt.gz"
+	folder_wordlist="wordlists"
+	rockyou="rockyou.txt.gz"
+
+	if [[ ! -d "${folder_wordlist}" ]]; then
+		mkdir "${folder_wordlist}"
+	fi
+
+	cd "${folder_wordlist}"
+
+	wget "${url_rockyou}"
+
+	if [[ $? -ne 0 ]]; then
+		echo "[-] File Wordlist 'rockyou.txt' gagal didownload."
+		exit 1
+	fi
+
+	gzip -d "${rockyou}"
+
+	if [[ $? -ne 0 ]]; then
+		echo "[-] File Wordlist 'rockyou.txt' gagal diekstrak."
+		exit 1
+	fi
+
+	cd ..
+}
+
 # Fungsi untuk menginstal zpct
 function instal_zpct(){
 
@@ -129,5 +159,6 @@ konfirmasi
 cek_koneksi_internet
 instal_dependensi
 instal_tools
+download_rockyou
 instal_zpct
 

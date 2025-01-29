@@ -13,7 +13,7 @@ p="\e[0;37m"
 r="\e[0m"
 
 # Tentang (DONE)
-versi="v1.4"
+versi="v1.5"
 pembuat="${h}Rofi ${p}(${h}Fixploit03${p})${r}"
 github="https://github.com/fixploit03/zpct"
 
@@ -186,6 +186,7 @@ function buat_folder_file_hash(){
 	fi
 }
 
+# Fungsi untuk memilih teknik untuk mengekstrak Hash file ZIP (DONE) *
 function pilih_teknik_ekstrak_hash(){
 	echo ""
 	echo -e "${k}Daftar Teknik Untuk Mengekstrak Hash File ZIP${p}:${r}"
@@ -260,10 +261,16 @@ function ekstrak_hash_file_zip(){
 		ekstrak_hash=$(zip2hashcat -o "${isi_file_zip}" "${file_zip}" 2>&1 > "${path_file_hash}")
 
 		if [[ $? -eq 0 ]]; then
-			echo -e "${p}[${h}+${p}] File Hash file ZIP berhasil diekstrak.${r}"
-			echo -e "${p}[${h}+${p}] File Hash disimpan di: ${h}${real_path}${r}"
+			if [[ $(grep -o '$pkzip' "${path_file_hash}" || grep -o 'zip2' "${path_file_hash}") ]]; then
+				echo -e "${p}[${h}+${p}] File Hash file ZIP berhasil diekstrak.${r}"
+				echo -e "${p}[${h}+${p}] File Hash disimpan di: ${h}${real_path}${r}"
+			else
+				echo -e "${p}[${m}-${p}] File Hash file ZIP gagal diekstrak.${r}"
+				exit 1
+			fi
 		else
 			echo -e "${p}[${m}-${p}] File Hash file ZIP gagal diekstrak.${r}"
+			exit 1
 		fi
 	elif [[ "${teknik_ekstrak_hash}" == "2" ]]; then
 		echo -e "${p}[${b}*${p}] Mengekstrak Hash file ZIP...${r}"
@@ -271,10 +278,16 @@ function ekstrak_hash_file_zip(){
 		ekstrak_hash=$(zip2hashcat "${file_zip}" 2>&1 > "${path_file_hash}")
 
 		if [[ $? -eq 0 ]]; then
-			echo -e "${p}[${h}+${p}] File Hash file ZIP berhasil diekstrak.${r}"
-			echo -e "${p}[${h}+${p}] File Hash disimpan di: ${h}${real_path}${r}"
+			if [[ $(grep -o '$pkzip' "${path_file_hash}" || grep -o 'zip2' "${path_file_hash}") ]]; then
+				echo -e "${p}[${h}+${p}] File Hash file ZIP berhasil diekstrak.${r}"
+				echo -e "${p}[${h}+${p}] File Hash disimpan di: ${h}${real_path}${r}"
+			else
+				echo -e "${p}[${m}-${p}] File Hash file ZIP gagal diekstrak.${r}"
+				exit 1
+			fi
 		else
 			echo -e "${p}[${m}-${p}] File Hash file ZIP gagal diekstrak.${r}"
+			exit 1
 		fi
 
 	fi
