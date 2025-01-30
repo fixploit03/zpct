@@ -12,3 +12,8 @@ cd zpct
 chmod +x instal.sh
 ./instal.sh
 ```
+
+```
+# Dibuat dengan ❤️ dan juga ☕
+# Happy Cracking ^_^
+```
