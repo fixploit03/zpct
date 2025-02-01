@@ -187,7 +187,7 @@ function pilih_teknik_crack_file_zip(){
 	echo -e "${p}--------------------------------------------------${r}"
 	echo -e "${p}[${k}1${p}] ${k}Konvensional ${p}(${k}Tanpa file Hash${p})${r}"
 	echo -e "${p}[${k}2${p}] ${k}Konvensional ${p}(${k}Dengan file Hash${p})${r}"
-	echo -e "${p}[${k}3${p}] ${k}KPA ${p}(${k}Known Plain Attack${p})${r}"
+	echo -e "${p}[${k}3${p}] ${k}KPA ${p}(${k}Known Plaintext Attack${p})${r}"
 	echo ""
 
 	while true; do
@@ -589,16 +589,16 @@ function mencari_kunci_enkripsi_file_zip(){
 	done
 
 	while true; do
-		read -r -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan nama file Known Plain Text (\e[0;34mFile teks yang diketahui isinya\e[0;37m): ' file_plain
+		read -r -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan nama file Known Plaintext (\e[0;34mFile teks yang diketahui isinya\e[0;37m): ' file_plain
 
 		if [[ -z "${file_plain}" ]]; then
-			echo -e "${p}[${m}-${p}] Nama file tidak boleh kosong.${r}"
+			echo -e "${p}[${m}-${p}] Nama file Known Plaintext tidak boleh kosong.${r}"
 		else
 			if [[ -f "${file_plain}" ]]; then
-				echo -e "${p}[${h}+${p}] File Known Plain Text ditemukan.${r}"
+				echo -e "${p}[${h}+${p}] File Known Plaintext ditemukan.${r}"
 				break
 			else
-				echo -e "${p}[${m}-${p}] File Known Plain Text tidak ditemukan.${r}"
+				echo -e "${p}[${m}-${p}] File Known Plaintext tidak ditemukan.${r}"
 				continue
 			fi
 		fi
@@ -1359,7 +1359,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 0
 			else
 				echo ""
@@ -1370,7 +1372,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 1
 			fi
 		else
@@ -1382,7 +1386,9 @@ function run_hashcat(){
 			echo ""
 			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 			echo ""
-			rm "pot.txt"
+			if [[ -f "pot.txt" ]]; then
+				rm "pot.txt"
+			fi
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "2" ]]; then
@@ -1416,7 +1422,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 0
 			else
 				echo ""
@@ -1427,7 +1435,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 1
 			fi
 		else
@@ -1439,7 +1449,9 @@ function run_hashcat(){
 			echo ""
 			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 			echo ""
-			rm "pot.txt"
+			if [[ -f "pot.txt" ]]; then
+				rm "pot.txt"
+			fi
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "3" ]]; then
@@ -1472,7 +1484,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 0
 			else
 				echo ""
@@ -1483,7 +1497,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 1
 			fi
 		else
@@ -1495,7 +1511,9 @@ function run_hashcat(){
 			echo ""
 			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 			echo ""
-			rm "pot.txt"
+			if [[ -f "pot.txt" ]]; then
+				rm "pot.txt"
+			fi
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "4" ]]; then
@@ -1527,7 +1545,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 0
 			else
 				echo ""
@@ -1538,7 +1558,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 1
 			fi
 		else
@@ -1550,7 +1572,9 @@ function run_hashcat(){
 			echo ""
 			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 			echo ""
-			rm "pot.txt"
+			if [[ -f "pot.txt" ]]; then
+				rm "pot.txt"
+			fi
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "5" ]]; then
@@ -1582,7 +1606,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 0
 			else
 				echo ""
@@ -1593,7 +1619,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 1
 			fi
 		else
@@ -1605,7 +1633,9 @@ function run_hashcat(){
 			echo ""
 			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 			echo ""
-			rm "pot.txt"
+			if [[ -f "pot.txt" ]]; then
+				rm "pot.txt"
+			fi
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "6" ]]; then
@@ -1638,7 +1668,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 0
 			else
 				echo ""
@@ -1649,7 +1681,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 1
 			fi
 		else
@@ -1661,7 +1695,9 @@ function run_hashcat(){
 			echo ""
 			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 			echo ""
-			rm "pot.txt"
+			if [[ -f "pot.txt" ]]; then
+				rm "pot.txt"
+			fi
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "7" ]]; then
@@ -1696,7 +1732,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 0
 			else
 				echo ""
@@ -1707,7 +1745,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 1
 			fi
 		else
@@ -1719,7 +1759,9 @@ function run_hashcat(){
 			echo ""
 			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 			echo ""
-			rm "pot.txt"
+			if [[ -f "pot.txt" ]]; then
+				rm "pot.txt"
+			fi
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "8" ]]; then
@@ -1751,7 +1793,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 0
 			else
 				echo ""
@@ -1762,7 +1806,9 @@ function run_hashcat(){
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
-				rm "pot.txt"
+				if [[ -f "pot.txt" ]]; then
+					rm "pot.txt"
+				fi
 				exit 1
 			fi
 		else
@@ -1774,10 +1820,79 @@ function run_hashcat(){
 			echo ""
 			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 			echo ""
-			rm "pot.txt"
+			if [[ -f "pot.txt" ]]; then
+				rm "pot.txt"
+			fi
 			exit 1
 		fi
 
+	fi
+}
+
+function run_bkcrack(){
+	mencari_kunci_enkripsi_file_zip
+	menentukan_panjang_kata_sandi
+	start_attack
+	tanggal=$(date +"%d-%m-%Y")
+	jam=$(date +"%H:%M:%S")
+	waktu_mulai="/${tanggal}/ ${jam}"
+
+	echo ""
+	echo -e "${p}[${b}*${p}] Dimulai pada: ${b}${waktu_mulai}${r}"
+	echo ""
+	echo -e "${p}[${b}*${p}] Mengcrack kata sandi file ZIP...${r}"
+	echo -e "${p}[${b}*${p}] Menjalankan alat Bkcrack...${r}"
+	echo ""
+
+	bkcrack -k $kunci -b ?p -l "${min}..${maks}" | tee "pot.txt"
+
+	if [[ -f "pot.txt" ]]; then
+		if [[ $(grep -i 'password:' "pot.txt") ]]; then
+			buat_folder_hasil
+			kata_sandi=$(awk 'END {print}' 'pot.txt' | cut -d ' ' -f 3)
+			echo ""
+			echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
+			echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
+			echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+			echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
+			echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
+			tanggal=$(date +"%d-%m-%Y")
+			jam=$(date +"%H:%M:%S")
+			waktu_selesai="/${tanggal}/ ${jam}"
+			echo ""
+			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
+			echo ""
+			if [[ -f "pot.txt" ]]; then
+				rm "pot.txt"
+			fi
+			exit 0
+		else
+			echo ""
+			echo -e "${p}[${m}-${p}] Kata sandi file ZIP tidak ditemukan.${r}"
+			tanggal=$(date +"%d-%m-%Y")
+			jam=$(date +"%H:%M:%S")
+			waktu_selesai="/${tanggal}/ ${jam}"
+			echo ""
+			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
+			echo ""
+			if [[ -f "pot.txt" ]]; then
+				rm "pot.txt"
+			fi
+			rm "pot.txt"
+		fi
+	else
+		echo ""
+		echo -e "${p}[${m}-${p}] Kata sandi file ZIP tidak ditemukan.${r}"
+		tanggal=$(date +"%d-%m-%Y")
+		jam=$(date +"%H:%M:%S")
+		waktu_selesai="/${tanggal}/ ${jam}"
+		echo ""
+		echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
+		echo ""
+		if [[ -f "pot.txt" ]]; then
+			rm "pot.txt"
+		fi
+		exit 1
 	fi
 }
 
@@ -1828,65 +1943,7 @@ function crack_file_zip(){
 		fi
 
 	elif [[ "${teknik_crack_file_zip}" == "3" ]]; then
-		mencari_kunci_enkripsi_file_zip
-		menentukan_panjang_kata_sandi
-		start_attack
-		tanggal=$(date +"%d-%m-%Y")
-		jam=$(date +"%H:%M:%S")
-		waktu_mulai="/${tanggal}/ ${jam}"
-
-		echo ""
-		echo -e "${p}[${b}*${p}] Dimulai pada: ${b}${waktu_mulai}${r}"
-		echo ""
-		echo -e "${p}[${b}*${p}] Mengcrack kata sandi file ZIP...${r}"
-		echo -e "${p}[${b}*${p}] Menjalankan alat Bkcrack...${r}"
-		echo ""
-
-		bkcrack -k $kunci -b ?p -l "${min}..${maks}" | tee "pot.txt"
-
-		if [[ -f "pot.txt" ]]; then
-			if [[ $(grep -i 'password:' "pot.txt") ]]; then
-				buat_folder_hasil
-				kata_sandi=$(grep -i 'password:' 'pot.txt' | cut -d ' ' -f 2)
-				echo ""
-				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
-				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
-				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
-				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
-				tanggal=$(date +"%d-%m-%Y")
-				jam=$(date +"%H:%M:%S")
-				waktu_selesai="/${tanggal}/ ${jam}"
-				echo ""
-				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
-				echo ""
-				rm "pot.txt"
-				exit 0
-			else
-				echo ""
-				echo -e "${p}[${m}-${p}] Kata sandi file ZIP tidak ditemukan.${r}"
-				tanggal=$(date +"%d-%m-%Y")
-				jam=$(date +"%H:%M:%S")
-				waktu_selesai="/${tanggal}/ ${jam}"
-				echo ""
-				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
-				echo ""
-				rm "pot.txt"
-				exit 1
-			fi
-		else
-			echo ""
-			echo -e "${p}[${m}-${p}] Kata sandi file ZIP tidak ditemukan.${r}"
-			tanggal=$(date +"%d-%m-%Y")
-			jam=$(date +"%H:%M:%S")
-			waktu_selesai="/${tanggal}/ ${jam}"
-			echo ""
-			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
-			echo ""
-			rm "pot.txt"
-			exit 1
-		fi
-
+		run_bkcrack
 	fi
 
 }
