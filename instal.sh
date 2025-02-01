@@ -61,7 +61,7 @@ function instal_dependensi(){
 
 	if [[ $? -ne 0 ]]; then
 		echo "[-] Repositori Linux gagal diperbarui."
-		exit 1
+		gagal+=("gagal")
 	fi
 
 	for instal_dependensi in "${daftar_dependensi[@]}"; do
@@ -145,14 +145,14 @@ function download_rockyou(){
 
 	if [[ $? -ne 0 ]]; then
 		echo "[-] File Wordlist 'rockyou.txt' gagal didownload."
-		exit 1
+		gagal+=("gagal")
 	fi
 
 	gzip -d "${rockyou}"
 
 	if [[ $? -ne 0 ]]; then
 		echo "[-] File Wordlist 'rockyou.txt' gagal diekstrak."
-		exit 1
+		gagal+=("gagal")
 	fi
 
 	cd ..
