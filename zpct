@@ -225,9 +225,10 @@ function ekstrak_hash_file_zip(){
 		echo ""
 		echo -e "${k}Daftar Isi File ZIP${p}:${r}"
 		echo -e "${p}--------------------${r}"
-		lihat_isi_file_zip=$(unzip -l "${file_zip}")
-		echo -e "${p}${lihat_isi_file_zip}${r}"
+		unzip -l "${file_zip}"
 		echo ""
+
+		lihat_isi_file_zip=$(unzip -Z1 "${file_zip}")
 
 		while true; do
 			read -r -p $'\e[0;37m[\e[0;34m#\e[0;37m] Masukkan salah satu nama file dari salah satu isi file ZIP: ' isi_file_zip
@@ -236,22 +237,12 @@ function ekstrak_hash_file_zip(){
 				echo -e "${p}[${m}-${p}] Nama file tidak boleh kosong.${r}"
 				continue
 			else
-				if [[ "${isi_file_zip}" == *" "* ]]; then
-					if [[ $(echo "${lihat_isi_file_zip}" | awk '{for(i=4;i<=NF;i++) printf "%s ", $i; print ""}' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | grep -x "${isi_file_zip}") ]]; then
-						echo -e "${p}[${h}+${p}] File ditemukan dalam file zip.${r}"
-						break
-					else
-						echo -e "${p}[${m}-${p}] File tidak ditemukan dalam file zip.${r}"
-						continue
-					fi
+				if [[ $(echo "${lihat_isi_file_zip}" |  grep -x "${isi_file_zip}") ]]; then
+					echo -e "${p}[${h}+${p}] File ditemukan dalam file zip.${r}"
+					break
 				else
-					if [[ $(echo "${lihat_isi_file_zip}" |  awk '{print $NF}' | grep -x "${isi_file_zip}") ]]; then
-						echo -e "${p}[${h}+${p}] File ditemukan dalam file zip.${r}"
-						break
-					else
-						echo -e "${p}[${m}-${p}] File tidak ditemukan dalam file zip.${r}"
-						continue
-					fi
+					echo -e "${p}[${m}-${p}] File tidak ditemukan dalam file zip.${r}"
+					continue
 				fi
 			fi
 		done
