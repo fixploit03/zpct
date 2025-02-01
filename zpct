@@ -242,7 +242,7 @@ function pilih_teknik_ekstrak_hash(){
 			continue
 		else
 			if [[ "${teknik_ekstrak_hash}" != "1" && "${teknik_ekstrak_hash}" != "2" ]]; then
-				echo -e "${p}[${r}-${p}] Teknik tidak tersedia.${r}"
+				echo -e "${p}[${m}-${p}] Teknik tidak tersedia.${r}"
 				continue
 			else
 				break
