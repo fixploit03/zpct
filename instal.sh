@@ -125,7 +125,7 @@ function instal_tools(){
 			cmake --build build --config Release
 			cmake --build build --config Release --target install
 			ln -s /opt/zpct/bkcrack/install/bkcrack "${target}"
-			cd ../..
+			cd ../
 		fi
 	done
 }
