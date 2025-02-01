@@ -99,7 +99,7 @@ function instal_tools(){
 			source=zpct
 	 		chmod +x "${source}"
 			cp "${source}" "${target}"
-		if [[ "${instal_tools}" == "${daftar_tools[1]}" ]]; then
+		elif [[ "${instal_tools}" == "${daftar_tools[1]}" ]]; then
 			cd zip2hashcat
 			make
 			cp zip2hashcat "${target}"
