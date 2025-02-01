@@ -53,7 +53,16 @@ function instal_dependensi(){
 		"wget"
 		"gzip"
 		"git"
+		"fcrackzip"
+		"cmake"
 	)
+
+	apt-get update
+
+	if [[ $? -ne 0 ]]; then
+		echo "[-] Repositori Linux gagal diperbarui."
+		exit 1
+	fi
 
 	for instal_dependensi in "${daftar_dependensi[@]}"; do
 		apt-get install "${instal_dependensi}"
@@ -66,13 +75,17 @@ function instal_dependensi(){
 # Fungsi untuk menginstal alat-alat yang diperlukan
 function instal_tools(){
 	daftar_tools=(
+		"fixploit03/zpct"
 		"hashstation/zip2hashcat"
 		"fixploit03/combinator"
 		"fixploit03/toggle-case"
 		"hashcat/princeprocessor/"
+		"kimci86/bkcrack"
 	)
 
 	target=/usr/local/bin/
+
+	cd /opt
 
 	for instal_tools in "${daftar_tools[@]}"; do
 		git clone "https://github.com/${instal_tools}"
@@ -82,25 +95,37 @@ function instal_tools(){
 		fi
 
 		if [[ "${instal_tools}" == "${daftar_tools[0]}" ]]; then
+			cd zpct
+			source=zpct
+	 		chmod +x "${source}"
+			cp "${source}" "${target}"
+		if [[ "${instal_tools}" == "${daftar_tools[1]}" ]]; then
 			cd zip2hashcat
 			make
 			cp zip2hashcat "${target}"
 			cd ..
-		elif [[ "${instal_tools}" == "${daftar_tools[1]}" ]]; then
+		elif [[ "${instal_tools}" == "${daftar_tools[2]}" ]]; then
 			cd combinator
 			make
 			cp combinator "${target}"
 			cd ..
-		elif [[ "${instal_tools}" == "${daftar_tools[2]}" ]]; then
+		elif [[ "${instal_tools}" == "${daftar_tools[3]}" ]]; then
 			cd toggle-case
 			make
 			cp toggle-case "${target}"
 			cd ..
-		elif [[ "${instal_tools}" == "${daftar_tools[3]}" ]]; then
+		elif [[ "${instal_tools}" == "${daftar_tools[4]}" ]]; then
 			cd princeprocessor/src
 			make
 			cp pp64.bin "${target}/princeprocessor"
 			cd ../../
+		elif [[ "${instal_tools}" == "${daftar_tools[5]}" ]]; then
+			cd bkcrack
+			cmake -S . -B build -DCMAKE_INSTALL_PREFIX=install
+			cmake --build build --config Release
+			cmake --build build --config Release --target install
+			ln -s /opt/zpct/bkcrack/install/bkcrack "${target}"
+			cd ../..
 		fi
 	done
 }
@@ -134,14 +159,7 @@ function download_rockyou(){
 }
 
 # Fungsi untuk menginstal zpct
-function instal_zpct(){
-
-	target=/usr/local/bin
-
-	source=zpct
-
- 	chmod +x "${source}"
-	cp "${source}" "${target}"
+function cek_status_instal_zpct(){
 
 	if [[ "${#gagal[@]}" -eq 0 ]]; then
 		echo "[+] zpct berhasil diinstal."
@@ -160,5 +178,5 @@ cek_koneksi_internet
 instal_dependensi
 instal_tools
 download_rockyou
-instal_zpct
+cek_status_instal_zpct
 
