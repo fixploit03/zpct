@@ -579,7 +579,7 @@ function mencari_kunci_enkripsi_file_zip(){
 				echo -e "${p}[${h}+${p}] File ditemukan dalam file zip.${r}"
 				break
 			elif [[ $(echo "${lihat_isi_file_zip_bkcrack}" | grep -i "${isi_file_zip_bkcrack}" | awk '{print $3}' | grep -x 'Deflate') ]]; then
-				echo -e "${p}[${h}+${p}] File tidak dikompres dengan metode Store.${r}"
+				echo -e "${p}[${m}-${p}] File tidak dikompres dengan metode Store.${r}"
 				continue
 			else
 				echo -e "${p}[${m}-${p}] File tidak ditemukan dalam file zip.${r}"
