@@ -55,6 +55,7 @@ function instal_dependensi(){
 		"git"
 		"fcrackzip"
 		"cmake"
+                "g++"
 	)
 
 	apt-get update
