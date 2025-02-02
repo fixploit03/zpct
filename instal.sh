@@ -56,6 +56,7 @@ function instal_dependensi(){
 		"fcrackzip"
 		"cmake"
                 "g++"
+		"mingw-w64"
 	)
 
 	apt-get update
