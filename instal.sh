@@ -82,7 +82,7 @@ function instal_tools(){
 		"fixploit03/combinator"
 		"fixploit03/toggle-case"
 		"fixploit03/princeprocessor/"
-		"kimci86/bkcrack"
+		"fixploit03/bkcrack"
 	)
 
 	target=/usr/local/bin/
