@@ -1,12 +1,6 @@
-```
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  Dibuat dengan ❤️ dan juga ☕   
-  Happy Cracking ^_^           
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-```
-
 # ZPCT
+
+![](https://github.com/fixploit03/zpct/blob/main/Screenshot_2025-02-02-14-25-54-409_tech.ula-edit.jpg)
 
 Script Bash sederhana untuk mengcrack kata sandi file ZIP. 
 
