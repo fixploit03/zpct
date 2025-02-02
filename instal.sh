@@ -81,7 +81,7 @@ function instal_tools(){
 		"hashstation/zip2hashcat"
 		"fixploit03/combinator"
 		"fixploit03/toggle-case"
-		"hashcat/princeprocessor/"
+		"fixploit03/princeprocessor/"
 		"kimci86/bkcrack"
 	)
 
