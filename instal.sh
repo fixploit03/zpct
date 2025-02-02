@@ -78,7 +78,7 @@ function instal_dependensi(){
 function instal_tools(){
 	daftar_tools=(
 		"fixploit03/zpct"
-		"hashstation/zip2hashcat"
+		"fixploit03/zip2hashcat"
 		"fixploit03/combinator"
 		"fixploit03/toggle-case"
 		"fixploit03/princeprocessor/"
