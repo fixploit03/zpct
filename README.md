@@ -54,13 +54,11 @@ ZPCT (ZIP Password Cracker Tool) adalah script berbasis Bash yang dirancang untu
   
 ## Instal
 
-> Pastikan Anda sudah berada dalam mode superuser (root) sebelum memulai proses instalasi.
-
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fixploit03/zpct/refs/heads/main/instal.sh)"
-```
-
 > Hanya dapat diinstal di sistem operasi Kali Linux.
+
+```
+sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fixploit03/zpct/refs/heads/main/instal.sh)"
+```
 
 ## Run
 
