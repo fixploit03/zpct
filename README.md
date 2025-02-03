@@ -70,6 +70,10 @@ Untuk menjalankan ZPCT ketikkan perintah dibawah ini:
 zpct
 ```
 
+## Catatan
+
+> Teknik konvensional (Tanpa file Hash) dan teknik KPA (Known Plaintext Attack) hanya bisa digunakan pada file ZIP yang memiliki enkripsi ZipCrypto.
+
 ## Lisensi
 
 Dilisensikan dibawah [Lisensi MIT]().
