@@ -98,7 +98,7 @@ function instal_tools(){
 
 		if [[ "${instal_tools}" == "${daftar_tools[0]}" ]]; then
 			cd zpct
-			source=zpct
+			source=src/zpct
 	 		chmod +x "${source}"
 			cp "${source}" "${target}"
 		elif [[ "${instal_tools}" == "${daftar_tools[1]}" ]]; then
