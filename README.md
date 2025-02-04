@@ -1,6 +1,6 @@
 # ZPCT
 
-![](https://github.com/fixploit03/zpct/blob/main/Screenshot_2025-02-02-14-25-54-409_tech.ula-edit.jpg)
+![](https://github.com/fixploit03/zpct/blob/main/img/zpct.jpg)
 
 ZPCT (ZIP Password Cracker Tool) adalah script berbasis Bash yang dirancang untuk mengcrack kata sandi file ZIP.
 
