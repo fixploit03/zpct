@@ -93,6 +93,13 @@ Berikut adalah contoh isi dari masing-masing file:
 
 > Teknik konvensional (Tanpa file Hash) dan teknik KPA (Known Plaintext Attack) hanya bisa digunakan pada file ZIP yang memiliki enkripsi ZipCrypto.
 
+## Credits
+
+- [Fcrackzip](http://oldhome.schmorp.de/marc/fcrackzip.html)
+- [John The Ripper](https://www.openwall.com/john/)
+- [Hashcat](https://hashcat.net/hashcat/)
+- [Bkcrac](https://github.com/kimci86/bkcrack)
+
 ## Lisensi
 
 Dilisensikan dibawah [Lisensi MIT]().
