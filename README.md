@@ -68,6 +68,15 @@ Untuk menjalankan ZPCT ketikkan perintah dibawah ini:
 zpct
 ```
 
+Untuk File ZIP yang berhasil dicrack disimpan di file `cracked.csv` dan berada di folder `/opt/zpct/hasil_cracking` berikut ini Sample file CSV nya:
+
+![](https://github.com/fixploit03/zpct/blob/main/img/cracked.png)
+
+<p align="center">
+    [ Sample File CSV ]
+</p>
+
+
 ## Catatan
 
 > Teknik konvensional (Tanpa file Hash) dan teknik KPA (Known Plaintext Attack) hanya bisa digunakan pada file ZIP yang memiliki enkripsi ZipCrypto.
