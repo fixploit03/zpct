@@ -68,7 +68,9 @@ Untuk menjalankan ZPCT ketikkan perintah dibawah ini:
 zpct
 ```
 
-Untuk File ZIP yang berhasil dicrack disimpan di file `cracked.csv` dan berada di folder `/opt/zpct/hasil_cracking` berikut ini Sample file CSV nya:
+Untuk file ZIP yang berhasil dicrack, hasilnya disimpan dalam file `.txt`. Sementara itu, semua file ZIP yang pernah dicrack disimpan dalam file `cracked.csv`. Kedua file tersebut berada di folder `/opt/zpct/hasil_cracking`.
+
+Berikut adalah contoh isi dari masing-masing file:
 
 ![](https://github.com/fixploit03/zpct/blob/main/img/cracked.png)
 
