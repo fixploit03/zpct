@@ -54,6 +54,7 @@ function cek_alat(){
 		"zip2hashcat"
 		"fcrackzip"
 		"bkcrack"
+		"csvkit"
 	)
 
 	gagal=()
