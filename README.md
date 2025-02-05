@@ -88,6 +88,12 @@ Opsi:
 --help          : Opsi untuk menampilkan menu bantuan.
 ```
 
+## Tutorial
+
+Untung tutorialnya ada di YouTube ya Boy:
+
+[Playlist ZPCT](https://youtube.com/playlist?list=PL3uTJ08u6HWwTKtOI1muGKCAsIp5lTcy6&si=NgDCIKYScykxnpBz)
+
 ## Hasil Proses Cracking 
 
 Untuk file ZIP yang berhasil dicrack, hasilnya disimpan dalam file `.txt`. Sementara itu, semua file ZIP yang pernah dicrack disimpan dalam file `cracked.csv`. Kedua file tersebut berada di folder `/opt/zpct/hasil_cracking`.
