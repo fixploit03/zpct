@@ -1954,14 +1954,48 @@ function help(){
 }
 
 if [[ $# -eq 1 ]]; then
-	if [[ $1 != "--instal" && $1 != "--run" && $1 != "--version" && $1 != "--update" && $1 != "--cracked-file" && $1 != "--uninstall" && $1 != "--help" ]]; then
+	if [[ $1 != "--install" && $1 != "--run" && $1 != "--version" && $1 != "--update" && $1 != "--cracked-file" && $1 != "--uninstall" && $1 != "--help" ]]; then
 		help
 	fi
 	cek_root
 	cek_os
-	cek_alat
+
 	if [[ $1 == "--install" ]]; then
-		bash instal.sh
+		:
+	else
+		cek_alat
+	fi
+
+	if [[ $1 == "--install" ]]; then
+		list_tools=(
+		        "lsb_release"
+			"combinator"
+			"toggle-case"
+			"john"
+			"hashcat"
+			"zipinfo"
+			"7z"
+			"unzip"
+			"zip2hashcat"
+			"fcrackzip"
+			"bkcrack"
+		)
+
+		status_install=()
+
+		for install_tools in "${list_tools[@]}"; do
+			if command -v "${install_tools}" &>/dev/null; then
+				status_install+=("INSTALLED")
+			fi
+		done
+
+		if [[ "${#status_install[@]}" -eq 11 ]]; then
+			echo "[+] Semua alat yang dibutuhkan sudah terinstal."
+			exit 0
+		else
+			bash instal.sh
+		fi
+
 	elif [[ $1 == "--run" ]]; then
 		# run script (DONE)
 		banner_script
@@ -2002,7 +2036,7 @@ if [[ $# -eq 1 ]]; then
 
 		for uninstall_tools in "${list_tools[@]}"; do
 			if [[ -f "${path_files}/${uninstall_tools}" ]]; then
-				rm "${uninstall_tools}"
+				rm "${path_files}/${uninstall_tools}"
 			else
 				status_uninstall+=("gagal")
 			fi
@@ -2014,7 +2048,7 @@ if [[ $# -eq 1 ]]; then
 			status_uninstall+=("gagal")
 		fi
 
-		if [[ "${#status_uninstall}" -eq 0 ]]; then
+		if [[ "${#status_uninstall[@]}" -eq 0 ]]; then
 			echo -e "${p}[${h}+${p}] ZPCT berhasil diuninstal.${r}"
 			exit 0
 		else
