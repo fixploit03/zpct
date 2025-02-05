@@ -2018,7 +2018,7 @@ if [[ $# -eq 1 ]]; then
 			echo -e "${p}[${m}-${p}] File '${file_cracked}' tidak ditemukan.${r}"
 			exit 1
 		else
-			csvlook "${file_cracked}"
+			csvlook --no-inference "${file_cracked}"
 			exit 0
 		fi
 	elif [[ $1 == "--uninstall" ]]; then
