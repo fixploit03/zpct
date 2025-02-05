@@ -1990,7 +1990,7 @@ if [[ $# -eq 1 ]]; then
 		done
 
 		if [[ "${#status_install[@]}" -eq 11 ]]; then
-			echo "[+] Semua alat yang dibutuhkan sudah terinstal."
+			echo -e "${p}[${h}+${p}] Semua alat yang dibutuhkan sudah terinstal.${r}"
 			exit 0
 		else
 			bash instal.sh
