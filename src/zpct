@@ -664,9 +664,6 @@ function mencari_kunci_enkripsi_file_zip(){
 		echo ""
 		echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 		echo ""
-		if [[ -f "pot.txt" ]]; then
-			rm "pot.txt"
-		fi
 		exit 1
 	fi
 }
