@@ -693,10 +693,27 @@ function buat_folder_hasil(){
 	fi
 }
 
+function buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack(){
+	real_path_file_zip=$(realpath "${file_zip}")
+
+	if [[ "${real_path_file_zip}" == *" "* ]]; then
+                real_path_file_zip="'${real_path_file_zip}'"
+        fi
+
+	nama_file_tampung="/opt/zpct/hasil_cracking/cracked.csv"
+
+	if [[ ! -f "${nama_file_tampung}" ]]; then
+		touch "${nama_file_tampung}"
+		echo "File ZIP, Kata Sandi, Alat yang Digunakan, Teknik yang Digunakan, Waktu Mulai, Waktu Selesai" > "${nama_file_tampung}"
+	fi
+
+}
+
 function run_fcrackzip(){
 	menu_pilih_teknik_tanpa_hash
-
+	alat="Fcrackzip"
 	if [[ "${pilih_teknik_tanpa_hash}" == "1" ]]; then
+		teknik="Dictionary Attack"
 		masukkan_file_wordlist
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -725,6 +742,10 @@ function run_fcrackzip(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -754,6 +775,7 @@ function run_fcrackzip(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik_tanpa_hash}" == "2" ]]; then
+		teknik="Brute Force Attack"
 		menentukan_panjang_kata_sandi
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -782,6 +804,10 @@ function run_fcrackzip(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -816,7 +842,9 @@ function run_fcrackzip(){
 # Fungsi untuk menjalankan alat John The Ripper (DONE) *
 function run_john_the_ripper(){
 	menu_pilih_teknik
+	alat="John The Ripper"
 	if [[ "${pilih_teknik}" == "1" ]]; then
+		teknik="Dictionary Attack"
 		masukkan_file_wordlist
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -843,6 +871,10 @@ function run_john_the_ripper(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -872,6 +904,7 @@ function run_john_the_ripper(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "2" ]]; then
+		teknik="Brute Force Attack"
 		menentukan_panjang_kata_sandi
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -897,7 +930,11 @@ function run_john_the_ripper(){
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				waktu_selesai="/${tanggal}/ ${jam}"
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -928,6 +965,7 @@ function run_john_the_ripper(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "3" ]]; then
+		teknik="Combinator Attack"
 		masukkan_file_wordlist_1
 		masukkan_file_wordlist_2
 		start_attack
@@ -955,6 +993,10 @@ function run_john_the_ripper(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -984,6 +1026,7 @@ function run_john_the_ripper(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "4" ]]; then
+		teknik="Mask Attack"
 		menentukan_pola_mask
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -1010,6 +1053,10 @@ function run_john_the_ripper(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1040,6 +1087,7 @@ function run_john_the_ripper(){
 		fi
 
 	elif [[ "${pilih_teknik}" == "5" ]]; then
+		teknik="Prince Attack"
 		masukkan_file_wordlist
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -1066,6 +1114,10 @@ function run_john_the_ripper(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1095,6 +1147,7 @@ function run_john_the_ripper(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "6" ]]; then
+		teknik="Hybrid Attack"
 		masukkan_file_wordlist
 		menentukan_pola_mask
 		start_attack
@@ -1122,6 +1175,10 @@ function run_john_the_ripper(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1151,6 +1208,7 @@ function run_john_the_ripper(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "7" ]]; then
+		teknik="Subsets Attack"
 		menentukan_panjang_kata_sandi
 		menentukan_kombinasi_karakter
 		start_attack
@@ -1178,6 +1236,10 @@ function run_john_the_ripper(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1207,6 +1269,7 @@ function run_john_the_ripper(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "8" ]]; then
+		teknik="Toggle Case Attack"
 		masukkan_file_wordlist
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -1233,6 +1296,10 @@ function run_john_the_ripper(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1268,7 +1335,9 @@ function run_john_the_ripper(){
 # Fungsi untuk menjalankan alat Hashcat (DONE) *
 function run_hashcat(){
 	menu_pilih_teknik
+	alat="Hashcat"
 	if [[ "${pilih_teknik}" == "1" ]]; then
+		teknik="Dictionary Attack"
 		masukkan_file_wordlist
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -1294,6 +1363,10 @@ function run_hashcat(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1323,6 +1396,7 @@ function run_hashcat(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "2" ]]; then
+		teknik="Brute Force Attack"
 		menentukan_panjang_kata_sandi
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -1350,6 +1424,10 @@ function run_hashcat(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1379,6 +1457,7 @@ function run_hashcat(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "3" ]]; then
+		teknik="Combinator Attack"
 		masukkan_file_wordlist_1
 		masukkan_file_wordlist_2
 		start_attack
@@ -1405,6 +1484,10 @@ function run_hashcat(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1434,6 +1517,7 @@ function run_hashcat(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "4" ]]; then
+		teknik="Mask Attack"
 		menentukan_pola_mask
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -1459,6 +1543,10 @@ function run_hashcat(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1488,6 +1576,7 @@ function run_hashcat(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "5" ]]; then
+		teknik="Prince Attack"
 		masukkan_file_wordlist
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -1513,6 +1602,10 @@ function run_hashcat(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1542,6 +1635,7 @@ function run_hashcat(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "6" ]]; then
+		teknik="Hybrid Attack"
 		masukkan_file_wordlist
 		menentukan_pola_mask
 		start_attack
@@ -1568,6 +1662,10 @@ function run_hashcat(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1597,6 +1695,7 @@ function run_hashcat(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "7" ]]; then
+		teknik="Subsets Attack"
 		menentukan_panjang_kata_sandi
 		menentukan_kombinasi_karakter
 		start_attack
@@ -1625,6 +1724,10 @@ function run_hashcat(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1654,6 +1757,7 @@ function run_hashcat(){
 			exit 1
 		fi
 	elif [[ "${pilih_teknik}" == "8" ]]; then
+		teknik="Toggle Case Attack"
 		masukkan_file_wordlist
 		start_attack
 		tanggal=$(date +"%d-%m-%Y")
@@ -1679,6 +1783,10 @@ function run_hashcat(){
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+				fi
 				echo ""
 				echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 				echo ""
@@ -1712,6 +1820,8 @@ function run_hashcat(){
 }
 
 function run_bkcrack(){
+	teknik="KPA (Known Plain Attack)"
+	alat="Bkcrack"
 	mencari_kunci_enkripsi_file_zip
 	menentukan_panjang_kata_sandi
 	start_attack
@@ -1741,6 +1851,10 @@ function run_bkcrack(){
 			tanggal=$(date +"%d-%m-%Y")
 			jam=$(date +"%H:%M:%S")
 			waktu_selesai="/${tanggal}/ ${jam}"
+			buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
+			if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
+				echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
+			fi
 			echo ""
 			echo -e "${p}[${b}*${p}] Selesai pada: ${b}${waktu_selesai}${r}"
 			echo ""
