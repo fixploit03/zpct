@@ -1944,12 +1944,12 @@ function help(){
 	echo -e ""
 	echo -e "${p}Opsi:${r}"
 	echo ""
-	echo -e "${h}--install      ${p}: Opsi untuk menginstal alat yang belum ternstal.${r}"
-	echo -e "${h}--run          ${p}: Opsi untuk menjalankan script.${r}"
-	echo -e "${h}--update       ${p}: Opsi untuk memperbarui script.${r}"
-	echo -e "${h}--cracked-file ${p}: Opsi untuk menampilkan seluruh file ZIP yang berhasil dicrack.${r}"
-	echo -e "${h}--uninstal     ${p}: Opsi untuk uninstal script.${r}"
-	echo -e "${h}--help         ${p}: Opsi untuk menampilkan menu bantuan.${r}"
+	echo -e "${h}--install       ${p}: Opsi untuk menginstal alat yang belum ternstal.${r}"
+	echo -e "${h}--run           ${p}: Opsi untuk menjalankan script.${r}"
+	echo -e "${h}--update        ${p}: Opsi untuk memperbarui script.${r}"
+	echo -e "${h}--cracked-file  ${p}: Opsi untuk menampilkan seluruh file ZIP yang berhasil dicrack.${r}"
+	echo -e "${h}--uninstall     ${p}: Opsi untuk menguninstal script.${r}"
+	echo -e "${h}--help          ${p}: Opsi untuk menampilkan menu bantuan.${r}"
 	exit 1
 }
 
