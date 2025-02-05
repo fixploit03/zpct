@@ -165,7 +165,7 @@ function cek_status_instal_zpct(){
 
 	if [[ "${#gagal[@]}" -eq 0 ]]; then
 		echo "[+] zpct berhasil diinstal."
-		echo "[+] Untuk menjalankannya ketikkan 'zpct'"
+		echo "[+] Untuk menjalankannya ketikkan 'zpct --help'"
 		exit 0
 	else
 		echo "[-] zpct gagal diinstal."
