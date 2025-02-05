@@ -98,7 +98,7 @@ Berikut adalah contoh isi dari masing-masing file:
 - [Fcrackzip](http://oldhome.schmorp.de/marc/fcrackzip.html)
 - [John The Ripper](https://www.openwall.com/john/)
 - [Hashcat](https://hashcat.net/hashcat/)
-- [Bkcrac](https://github.com/kimci86/bkcrack)
+- [Bkcrack](https://github.com/kimci86/bkcrack)
 
 ## Lisensi
 
