@@ -2,7 +2,7 @@
 
 ![](https://github.com/fixploit03/zpct/blob/main/img/zpct.jpg)
 
-ZPCT (ZIP Password Cracker Tool) adalah script berbasis Bash yang dirancang untuk mengcrack kata sandi file ZIP.
+`ZPCT` (ZIP Password Cracker Tool) adalah script berbasis Bash yang dirancang untuk mengcrack kata sandi file ZIP.
 
 ## Fitur
 
@@ -52,7 +52,7 @@ ZPCT (ZIP Password Cracker Tool) adalah script berbasis Bash yang dirancang untu
 - Koneksi internet
 - Kopi (Biar ga ngantuk ^_^)
   
-## Instal
+## Cara Instal
 
 > Hanya dapat diinstal di sistem operasi Kali Linux.
 
@@ -60,13 +60,17 @@ ZPCT (ZIP Password Cracker Tool) adalah script berbasis Bash yang dirancang untu
 sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fixploit03/zpct/refs/heads/main/instal.sh)"
 ```
 
-## Run
+## Cara menjalankan 
 
 Untuk menjalankan ZPCT ketikkan perintah dibawah ini:
 
 ```
 zpct
 ```
+
+ikuti instruksi yang ditampilkan di menu. 
+
+## Hasil Proses Cracking 
 
 Untuk file ZIP yang berhasil dicrack, hasilnya disimpan dalam file `.txt`. Sementara itu, semua file ZIP yang pernah dicrack disimpan dalam file `cracked.csv`. Kedua file tersebut berada di folder `/opt/zpct/hasil_cracking`.
 
@@ -85,7 +89,7 @@ Berikut adalah contoh isi dari masing-masing file:
 </p>
 
 
-## Catatan
+## Catatan Penting 
 
 > Teknik konvensional (Tanpa file Hash) dan teknik KPA (Known Plaintext Attack) hanya bisa digunakan pada file ZIP yang memiliki enkripsi ZipCrypto.
 
