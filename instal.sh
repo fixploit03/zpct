@@ -57,6 +57,7 @@ function instal_dependensi(){
 		"cmake"
                 "g++"
 		"mingw-w64"
+		"csvkit"
 	)
 
 	apt-get update
