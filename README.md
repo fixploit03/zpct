@@ -72,6 +72,12 @@ Untuk file ZIP yang berhasil dicrack, hasilnya disimpan dalam file `.txt`. Semen
 
 Berikut adalah contoh isi dari masing-masing file:
 
+![](https://github.com/fixploit03/zpct/blob/main/img/cracked_txt.png)
+
+<p align="center">
+    [ Sample File TXT ]
+</p>
+
 ![](https://github.com/fixploit03/zpct/blob/main/img/cracked.png)
 
 <p align="center">
