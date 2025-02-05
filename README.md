@@ -65,10 +65,28 @@ sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fixploit03/zpc
 Untuk menjalankan ZPCT ketikkan perintah dibawah ini:
 
 ```
-zpct
+zpct --help
 ```
 
-ikuti instruksi yang ditampilkan di menu. 
+Output 
+
+```
+root@localhost:~# zpct --help
+
+ZPCT 2.1 - https://github.com/fixploit03/zpct/
+Copyright (c) 2025 - Rofi (Fixploit03)
+
+Penggunaan: zpct [OPSI]
+
+Opsi:
+
+--install       : Opsi untuk menginstal alat yang belum ternstal.
+--run           : Opsi untuk menjalankan script.
+--update        : Opsi untuk memperbarui script.
+--cracked-file  : Opsi untuk menampilkan seluruh file ZIP yang berhasil dicrack.
+--uninstall     : Opsi untuk menguninstal script.
+--help          : Opsi untuk menampilkan menu bantuan.
+```
 
 ## Hasil Proses Cracking 
 
