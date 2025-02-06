@@ -1977,9 +1977,7 @@ if [[ $# -eq 1 ]]; then
 		echo -e "${p}${script} ${versi}${r}"
 		exit 0
 	elif [[ $1 == "--update" ]]; then
-		cd /opt/zpct
-		git pull origin main
-		cd -
+		apt-get update -y
 	elif [[ $1 == "--cracked-file" ]]; then
 		file_cracked="/opt/zpct/hasil_cracking/cracked.csv"
 		if [[ ! -f "${file_cracked}" ]]; then
