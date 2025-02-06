@@ -82,18 +82,19 @@ function cek_alat(){
 
 # Fungsi untuk menampilkan banner script (DONE) *
 function banner_script(){
-	echo -e "${p}+--------------------------------------------+${r}"
-	echo -e "${p}| ${c} ________  ________  ________  _________   ${p}|${r}"
-	echo -e "${p}| ${c}|\_____  \|\   __  \|\   ____\|___   ___\  ${p}|${r}"
-	echo -e "${p}|  ${c}\|___/  /\ \  \|\  \ \  \___\|___ \  \_|  ${p}|${r}"
-	echo -e "${p}|      ${c}/  / /\ \   ____\ \  \       \ \  \   ${p}|${r}"
-	echo -e "${p}|     ${c}/  /_/__\ \  \___|\ \  \____   \ \  \  ${p}|${r}"
-	echo -e "${p}|    ${c}|\________\ \__\    \ \_______\  \ \__\ ${p}|${r}"
-	echo -e "${p}|     ${c}\|_______|\|__|     \|_______|   \|__| ${p}|${r}"
-	echo -e "${p}|                                       ${h}${versi} ${p}|${r}"
-	echo -e "${p}|                       ${h}By ${pembuat} ${p}|${r}"
-	echo -e "${p}|         ${h}${github} ${p}|${r}"
-	echo -e "${p}+--------------------------------------------+${r}"
+	echo ""
+	echo -e "   _____             _____"
+	echo -e "  / ___ \           / ___ \ "
+	echo -e " / /   \ \_________/ /   \ \   ${p}[   ${h}${script}   ${p}]${r}"
+	echo -e "| |     _/ \    / \_      | |  ------------"
+	echo -e " \     /  ^ \  / ^  \      /     ${m}ZIP${r}"
+	echo -e "  \   |  | | \/ | |  |    /      ${m}Password${r}"
+	echo -e "  /   |  |${m}O${r}|    |${m}O${r}|  |    \      ${m}Cracking${r} "
+	echo -e " |__ /------ @@ -------\ __|     ${m}Tools${r}"
+	echo -e "  \     __   @@   __      /    ------------"
+	echo -e "   \      \______/       /     ${p}[   ${h}${versi}   ${p}]${r}"
+	echo -e "    \__     \__/      __/ "
+	echo -e "       \_____________/ "
 	echo ""
 }
 
@@ -732,16 +733,16 @@ function run_fcrackzip(){
 			if [[ $(grep -i 'password found' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(awk 'END {print}' "pot.txt" | cut -d ' ' -f 5-)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -794,16 +795,16 @@ function run_fcrackzip(){
 			if [[ $(grep -i 'password found' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(awk 'END {print}' "pot.txt" | cut -d ' ' -f 5-)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -861,16 +862,16 @@ function run_john_the_ripper(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -921,15 +922,15 @@ function run_john_the_ripper(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				waktu_selesai="/${tanggal}/ ${jam}"
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
@@ -983,16 +984,16 @@ function run_john_the_ripper(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1043,16 +1044,16 @@ function run_john_the_ripper(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1104,16 +1105,16 @@ function run_john_the_ripper(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1165,16 +1166,16 @@ function run_john_the_ripper(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1226,16 +1227,16 @@ function run_john_the_ripper(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1286,16 +1287,16 @@ function run_john_the_ripper(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1353,16 +1354,16 @@ function run_hashcat(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1414,16 +1415,16 @@ function run_hashcat(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1474,16 +1475,16 @@ function run_hashcat(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1533,16 +1534,16 @@ function run_hashcat(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1592,16 +1593,16 @@ function run_hashcat(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1652,16 +1653,16 @@ function run_hashcat(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1714,16 +1715,16 @@ function run_hashcat(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1773,16 +1774,16 @@ function run_hashcat(){
 			if [[ $(grep -o ':' "pot.txt") ]]; then
 				buat_folder_hasil
 				kata_sandi=$(cat "pot.txt" | cut -d ':' -f 2)
+				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				echo ""
 				echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 				echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-				echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+				echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 				echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 				echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 				tanggal=$(date +"%d-%m-%Y")
 				jam=$(date +"%H:%M:%S")
 				waktu_selesai="/${tanggal}/ ${jam}"
-				buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 				if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 					echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 				fi
@@ -1841,16 +1842,16 @@ function run_bkcrack(){
 		if [[ $(grep -i 'password:' "pot.txt") ]]; then
 			buat_folder_hasil
 			kata_sandi=$(awk 'END {print}' 'pot.txt' | cut -d ' ' -f 3)
+			buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 			echo ""
 			echo -e "${p}[${h}+${p}] Kata sandi file ZIP ditemukan.${r}"
 			echo -e "${p}[${h}+${p}] Kata sandi: ${h}${kata_sandi}${r}"
-			echo "[+] File ZIP: ${file_zip}" > "${path_hasil}"
+			echo "[+] File ZIP: ${real_path_file_zip}" > "${path_hasil}"
 			echo "[+] Kata sandi: ${kata_sandi}" >> "${path_hasil}"
 			echo -e "${p}[${h}+${p}] Hasil cracking disimpan di: ${h}${real_path_folder_hasil}${r}"
 			tanggal=$(date +"%d-%m-%Y")
 			jam=$(date +"%H:%M:%S")
 			waktu_selesai="/${tanggal}/ ${jam}"
-			buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack
 			if [[ ! $(grep -w "${real_path_file_zip}" "${nama_file_tampung}" && grep -w "${kata_sandi}" "${nama_file_tampung}") ]]; then
 				echo "${real_path_file_zip}, ${kata_sandi}, ${alat}, ${teknik}, ${waktu_mulai}, ${waktu_selesai}" >> "${nama_file_tampung}"
 			fi
@@ -1937,7 +1938,7 @@ function crack_file_zip(){
 }
 
 function help(){
-	echo 
+	banner_script
 	echo -e "${p}ZPCT 2.1 - https://github.com/fixploit03/zpct/${r}"
 	echo -e "${p}Copyright (c) 2025 - Rofi (Fixploit03)${r}"
 	echo ""
@@ -1945,9 +1946,10 @@ function help(){
 	echo -e ""
 	echo -e "${p}Opsi:${r}"
 	echo ""
-	echo -e "${h}--install       ${p}: Opsi untuk menginstal alat yang belum ternstal.${r}"
+	# echo -e "${h}--install       ${p}: Opsi untuk menginstal alat yang belum ternstal.${r}"
 	echo -e "${h}--run           ${p}: Opsi untuk menjalankan script.${r}"
 	echo -e "${h}--update        ${p}: Opsi untuk memperbarui script.${r}"
+	echo -e "${h}--version       ${p}: Opsi untuk menampilkan versi script."
 	echo -e "${h}--cracked-file  ${p}: Opsi untuk menampilkan seluruh file ZIP yang berhasil dicrack.${r}"
 	echo -e "${h}--uninstall     ${p}: Opsi untuk menguninstal script.${r}"
 	echo -e "${h}--help          ${p}: Opsi untuk menampilkan menu bantuan.${r}"
@@ -1955,50 +1957,15 @@ function help(){
 }
 
 if [[ $# -eq 1 ]]; then
-	if [[ $1 != "--install" && $1 != "--run" && $1 != "--version" && $1 != "--update" && $1 != "--cracked-file" && $1 != "--uninstall" && $1 != "--help" ]]; then
+	if [[ $1 != "--run" && $1 != "--version" && $1 != "--update" && $1 != "--cracked-file" && $1 != "--uninstall" && $1 != "--help" ]]; then
 		help
 	fi
 	cek_root
 	cek_os
-
-	if [[ $1 == "--install" ]]; then
-		:
-	else
-		cek_alat
-	fi
-
-	if [[ $1 == "--install" ]]; then
-		list_tools=(
-		        "lsb_release"
-			"combinator"
-			"toggle-case"
-			"john"
-			"hashcat"
-			"zipinfo"
-			"7z"
-			"unzip"
-			"zip2hashcat"
-			"fcrackzip"
-			"bkcrack"
-		)
-
-		status_install=()
-
-		for install_tools in "${list_tools[@]}"; do
-			if command -v "${install_tools}" &>/dev/null; then
-				status_install+=("INSTALLED")
-			fi
-		done
-
-		if [[ "${#status_install[@]}" -eq 11 ]]; then
-			echo -e "${p}[${h}+${p}] Semua alat yang dibutuhkan sudah terinstal.${r}"
-			exit 0
-		else
-			bash instal.sh
-		fi
-
-	elif [[ $1 == "--run" ]]; then
+	cek_alat
+	if [[ $1 == "--run" ]]; then
 		# run script (DONE)
+		clear
 		banner_script
 		masukkan_file_zip
 		cek_jumlah_isi_file_zip
@@ -2065,3 +2032,4 @@ fi
 
 # Dibuat dengan ❤️ dan juga ☕
 # Happy Cracking ^_^
+
