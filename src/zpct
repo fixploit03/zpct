@@ -90,7 +90,7 @@ function banner_script(){
 	echo -e " \     /  ^ \  / ^  \      /     ${m}ZIP${r}"
 	echo -e "  \   |  | | \/ | |  |    /      ${m}Password${r}"
 	echo -e "  /   |  |${m}O${r}|    |${m}O${r}|  |    \      ${m}Cracking${r} "
-	echo -e " |__ /------ @@ -------\ __|     ${m}Tools${r}"
+	echo -e " |__ /------ @@ -------\ __|     ${m}Tool ${r}"
 	echo -e "  \     __   @@   __      /    ------------"
 	echo -e "   \      \______/       /     ${p}[   ${h}${versi}   ${p}]${r}"
 	echo -e "    \__     \__/      __/ "
