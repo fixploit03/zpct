@@ -88,9 +88,7 @@ Opsi:
 --help          : Opsi untuk menampilkan menu bantuan.
 ```
 
-## Tutorial
-
-Untung tutorialnya ada di YouTube ya Boy:
+## Demonstrasi 
 
 [Playlist ZPCT](https://youtube.com/playlist?list=PL3uTJ08u6HWwTKtOI1muGKCAsIp5lTcy6&si=NgDCIKYScykxnpBz)
 
