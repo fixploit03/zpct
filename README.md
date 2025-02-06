@@ -36,7 +36,6 @@ Penggunaan: zpct [OPSI]
 
 Opsi:
 
---install       : Opsi untuk menginstal alat yang belum ternstal.
 --run           : Opsi untuk menjalankan script.
 --update        : Opsi untuk memperbarui script.
 --cracked-file  : Opsi untuk menampilkan seluruh file ZIP yang berhasil dicrack.
