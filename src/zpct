@@ -1960,7 +1960,7 @@ function help(){
 	echo -e "${p}Opsi:${r}"
 	echo ""
 	echo -e "${h}--run           ${p}: Opsi untuk menjalankan script.${r}"
-	echo -e "${h}--update        ${p}: Opsi untuk memperbarui script.${r}"
+	# echo -e "${h}--update        ${p}: Opsi untuk memperbarui script.${r}"
 	echo -e "${h}--version       ${p}: Opsi untuk menampilkan versi script."
 	echo -e "${h}--cracked-file  ${p}: Opsi untuk menampilkan seluruh file ZIP yang berhasil dicrack.${r}"
 	echo -e "${h}--uninstall     ${p}: Opsi untuk menguninstal script.${r}"
