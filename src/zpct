@@ -83,18 +83,31 @@ function cek_alat(){
 # Fungsi untuk menampilkan banner script (DONE) *
 function banner_script(){
 	echo ""
+	sleep 0.1
 	echo -e "   _____             _____"
+	sleep 0.1
 	echo -e "  / ___ \           / ___ \ "
+	sleep 0.1
 	echo -e " / /   \ \_________/ /   \ \   ${p}[   ${h}${script}   ${p}]${r}"
+	sleep 0.1
 	echo -e "| |     _/ \    / \_      | |  ------------"
+	sleep 0.1
 	echo -e " \     /  ^ \  / ^  \      /     ${m}ZIP${r}"
+	sleep 0.1
 	echo -e "  \   |  | | \/ | |  |    /      ${m}Password${r}"
+	sleep 0.1
 	echo -e "  /   |  |${m}O${r}|    |${m}O${r}|  |    \      ${m}Cracking${r} "
+	sleep 0.1
 	echo -e " |__ /------ @@ -------\ __|     ${m}Tool ${r}"
+	sleep 0.1
 	echo -e "  \     __   @@   __      /    ------------"
+	sleep 0.1
 	echo -e "   \      \______/       /     ${p}[   ${h}${versi}   ${p}]${r}"
+	sleep 0.1
 	echo -e "    \__     \__/      __/ "
+	sleep 0.1
 	echo -e "       \_____________/ "
+	sleep 0.1
 	echo ""
 }
 
@@ -1938,7 +1951,7 @@ function crack_file_zip(){
 }
 
 function help(){
-	banner_script
+	echo ""
 	echo -e "${p}ZPCT 2.1 - https://github.com/fixploit03/zpct/${r}"
 	echo -e "${p}Copyright (c) 2025 - Rofi (Fixploit03)${r}"
 	echo ""
@@ -1946,13 +1959,13 @@ function help(){
 	echo -e ""
 	echo -e "${p}Opsi:${r}"
 	echo ""
-	# echo -e "${h}--install       ${p}: Opsi untuk menginstal alat yang belum ternstal.${r}"
 	echo -e "${h}--run           ${p}: Opsi untuk menjalankan script.${r}"
 	echo -e "${h}--update        ${p}: Opsi untuk memperbarui script.${r}"
 	echo -e "${h}--version       ${p}: Opsi untuk menampilkan versi script."
 	echo -e "${h}--cracked-file  ${p}: Opsi untuk menampilkan seluruh file ZIP yang berhasil dicrack.${r}"
 	echo -e "${h}--uninstall     ${p}: Opsi untuk menguninstal script.${r}"
 	echo -e "${h}--help          ${p}: Opsi untuk menampilkan menu bantuan.${r}"
+	echo ""
 	exit 1
 }
 
