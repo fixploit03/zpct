@@ -82,6 +82,7 @@ function cek_alat(){
 
 # Fungsi untuk menampilkan banner script (DONE) *
 function banner_script(){
+	echo "TES UPDATE"
 	echo ""
 	sleep 0.1
 	echo -e "   _____             _____"
