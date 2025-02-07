@@ -1991,6 +1991,13 @@ if [[ $# -eq 1 ]]; then
 		exit 0
 	elif [[ $1 == "--update" ]]; then
 		apt-get update -y
+		cd /opt/zpct
+		git remote -v
+		git fetch origin
+		git pull origin main
+		chmod +x src/zpct
+		cp src/zpct /usr/local/bin
+		cd -
 	elif [[ $1 == "--cracked-file" ]]; then
 		file_cracked="/opt/zpct/hasil_cracking/cracked.csv"
 		if [[ ! -f "${file_cracked}" ]]; then
