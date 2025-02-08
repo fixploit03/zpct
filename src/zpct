@@ -111,6 +111,15 @@ function banner_script(){
 	echo ""
 }
 
+function banner_update(){
+	echo -e "${h} _   _ ____  ____    _  _____ _____ ${r}"
+	echo -e "${h}| | | |  _ \|  _ \  / \|_   _| ____|${r}"
+	echo -e "${h}| | | | |_) | | | |/ _ \ | | |  _|  ${r}"
+	echo -e "${h}| |_| |  __/| |_| / ___ \| | | |___ ${r}"
+	echo -e "${h} \___/|_|   |____/_/   \_\_| |_____|${r}"
+	echo -e "${r}"
+}
+
 # Fungsi untuk memasukkan file ZIP sekaligus mengecek file ZIP (DONE) *
 function masukkan_file_zip(){
 	while true; do
@@ -1960,7 +1969,7 @@ function help(){
 	echo -e "${p}Opsi:${r}"
 	echo ""
 	echo -e "${h}--run           ${p}: Opsi untuk menjalankan script.${r}"
-	# echo -e "${h}--update        ${p}: Opsi untuk memperbarui script.${r}"
+	echo -e "${h}--update        ${p}: Opsi untuk memperbarui script.${r}"
 	echo -e "${h}--version       ${p}: Opsi untuk menampilkan versi script."
 	echo -e "${h}--cracked-file  ${p}: Opsi untuk menampilkan seluruh file ZIP yang berhasil dicrack.${r}"
 	echo -e "${h}--uninstall     ${p}: Opsi untuk menguninstal script.${r}"
@@ -1970,7 +1979,7 @@ function help(){
 }
 
 if [[ $# -eq 1 ]]; then
-	if [[ $1 != "--run" && $1 != "--version" && $1 != "--cracked-file" && $1 != "--uninstall" && $1 != "--help" ]]; then
+	if [[ $1 != "--run" && $1 != "--update" && $1 != "--version" && $1 != "--cracked-file" && $1 != "--uninstall" && $1 != "--help" ]]; then
 		help
 	fi
 	cek_root
@@ -1989,15 +1998,36 @@ if [[ $# -eq 1 ]]; then
 	elif [[ $1 == "--version" ]]; then
 		echo -e "${p}${script} ${versi}${r}"
 		exit 0
-	# elif [[ $1 == "--update" ]]; then
-	#	apt-get update -y
-	#	cd /opt/zpct
-	#	git remote -v
-	#	git fetch origin
-	#	git pull origin main
-	#	chmod +x src/zpct
-	#	cp src/zpct /usr/local/bin
-	#	cd -
+	elif [[ $1 == "--update" ]]; then
+		banner_update
+		echo -e "${p}[${b}*${p}] Memperbarui ZPCT...${r}"
+
+		status_update=()
+
+		list_tools=(
+			"john"
+			"hashcat"
+			"fcrackzip"
+			"lsb-release"
+			"unzip"
+			"p7zip-full"
+			"csvkit"
+		)
+
+		for update in "${list_tools[@]}"; do
+			apt-get install --only-upgrade "${update}"
+			if [[ $? -ne 0 ]]; then
+				status_update+=("gagal")
+			fi
+		done
+
+		if [[ "${#status_update[@]}" -eq 0 ]]; then
+			echo -e "${p}[${h}+${p}] ZPCT berhasil diperbarui.${r}"
+			exit 0
+		else
+			echo -e "${p}[${m}-${p}] ZPCT gagal diperbarui${r}"
+			exit 1
+		fi
 	elif [[ $1 == "--cracked-file" ]]; then
 		file_cracked="/opt/zpct/hasil_cracking/cracked.csv"
 		if [[ ! -f "${file_cracked}" ]]; then
