@@ -1,16 +1,32 @@
 #!/bin/bash
-# Script Bash sederhana untuk mengcrack kata sandi file ZIP
+#--------------------------------------------
+#...............: ZPCT
+#...............: Script Bash sederhana yang dirancang untuk mengcrack file ZIP.
+#...............: v2.5
+#...............: Rofi (Fixploit03)
+#...............: https://github.com/fixploit03/zpct
 #
-# Dibuat oleh Rofi (Fixploit03)
+#---------------- DISCLAIMER ----------------
+#
+# Script ini saya buat hanya untuk tujuan edukasi dan pembelajaran saja, tidak
+# ada niatan untuk mendorong atau mempromosikan kegiatan yang melanggar hukum!.
+# Gunakan script ini dengan bijak, gunakan hanya pada file ZIP yang Anda miliki,
+# jangan gunakan script ini untuk membobol/mengcrack file ZIP orang lain.
+#
+#--------------------------------------------
+#
+# Script ini 100% Free alias Gratis (Open Source)
+#
+#--------------------------------------------
 
 # Variabel warna
-m="\e[0;31m"
-h="\e[0;32m"
-k="\e[0;33m"
-b="\e[0;34m"
-c="\e[0;36m"
-p="\e[0;37m"
-r="\e[0m"
+m="\e[0;31m" # Merah
+h="\e[0;32m" # Hijau
+k="\e[0;33m" # Kuning
+b="\e[0;34m" # Biru
+c="\e[0;36m" # Cyan
+p="\e[0;37m" # Putih
+r="\e[0m"    # Reset
 
 # Fungsi untuk mengecek root (DONE) *
 function cek_root(){
@@ -22,7 +38,7 @@ function cek_root(){
 
 # Tentang (DONE) *
 script="ZPCT"
-versi="v2.1"
+versi="v2.5"
 pembuat="${h}Rofi ${p}(${h}Fixploit03${p})${r}"
 github="https://github.com/fixploit03/zpct"
 
@@ -54,7 +70,6 @@ function cek_alat(){
 		"zip2hashcat"
 		"fcrackzip"
 		"bkcrack"
-		"csvlook"
 	)
 
 	gagal=()
@@ -82,42 +97,19 @@ function cek_alat(){
 
 # Fungsi untuk menampilkan banner script (DONE) *
 function banner_script(){
+	echo -e "${p}+--------------------------------------------+${r}"
+	echo -e "${p}| ${c} ________  ________  ________  _________   ${p}|${r}"
+	echo -e "${p}| ${c}|\_____  \|\   __  \|\   ____\|___   ___\  ${p}|${r}"
+	echo -e "${p}|  ${c}\|___/  /\ \  \|\  \ \  \___\|___ \  \_|  ${p}|${r}"
+	echo -e "${p}|      ${c}/  / /\ \   ____\ \  \       \ \  \   ${p}|${r}"
+	echo -e "${p}|     ${c}/  /_/__\ \  \___|\ \  \____   \ \  \  ${p}|${r}"
+	echo -e "${p}|    ${c}|\________\ \__\    \ \_______\  \ \__\ ${p}|${r}"
+	echo -e "${p}|     ${c}\|_______|\|__|     \|_______|   \|__| ${p}|${r}"
+	echo -e "${p}|                                       ${h}${versi} ${p}|${r}"
+	echo -e "${p}|                       ${h}By ${pembuat} ${p}|${r}"
+	echo -e "${p}|         ${h}${github} ${p}|${r}"
+	echo -e "${p}+--------------------------------------------+${r}"
 	echo ""
-	sleep 0.1
-	echo -e "   _____             _____"
-	sleep 0.1
-	echo -e "  / ___ \           / ___ \ "
-	sleep 0.1
-	echo -e " / /   \ \_________/ /   \ \   ${p}[   ${h}${script}   ${p}]${r}"
-	sleep 0.1
-	echo -e "| |     _/ \    / \_      | |  ------------"
-	sleep 0.1
-	echo -e " \     /  ^ \  / ^  \      /     ${m}ZIP${r}"
-	sleep 0.1
-	echo -e "  \   |  | | \/ | |  |    /      ${m}Password${r}"
-	sleep 0.1
-	echo -e "  /   |  |${m}O${r}|    |${m}O${r}|  |    \      ${m}Cracking${r} "
-	sleep 0.1
-	echo -e " |__ /------ @@ -------\ __|     ${m}Tool ${r}"
-	sleep 0.1
-	echo -e "  \     __   @@   __      /    ------------"
-	sleep 0.1
-	echo -e "   \      \______/       /     ${p}[   ${h}${versi}   ${p}]${r}"
-	sleep 0.1
-	echo -e "    \__     \__/      __/ "
-	sleep 0.1
-	echo -e "       \_____________/ "
-	sleep 0.1
-	echo ""
-}
-
-function banner_update(){
-	echo -e "${h} _   _ ____  ____    _  _____ _____ ${r}"
-	echo -e "${h}| | | |  _ \|  _ \  / \|_   _| ____|${r}"
-	echo -e "${h}| | | | |_) | | | |/ _ \ | | |  _|  ${r}"
-	echo -e "${h}| |_| |  __/| |_| / ___ \| | | |___ ${r}"
-	echo -e "${h} \___/|_|   |____/_/   \_\_| |_____|${r}"
-	echo -e "${r}"
 }
 
 # Fungsi untuk memasukkan file ZIP sekaligus mengecek file ZIP (DONE) *
@@ -715,6 +707,7 @@ function buat_folder_hasil(){
 	fi
 }
 
+# Fungsi untuk membuat file untuk menampung file ZIP yang berhasil dicrack (DONE) *
 function buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack(){
 	real_path_file_zip=$(realpath "${file_zip}")
 
@@ -731,6 +724,7 @@ function buat_file_untuk_menampung_file_zip_yang_berhasil_dicrack(){
 
 }
 
+# Fungsi untuk menjalankan alat Fcrackzip (DONE) *
 function run_fcrackzip(){
 	menu_pilih_teknik_tanpa_hash
 	alat="Fcrackzip"
@@ -1959,124 +1953,15 @@ function crack_file_zip(){
 
 }
 
-function help(){
-	echo ""
-	echo -e "${p}ZPCT 2.1 - https://github.com/fixploit03/zpct/${r}"
-	echo -e "${p}Copyright (c) 2025 - Rofi (Fixploit03)${r}"
-	echo ""
-	echo -e "${p}Penggunaan: zpct [OPSI]${r}"
-	echo -e ""
-	echo -e "${p}Opsi:${r}"
-	echo ""
-	echo -e "${h}--run           ${p}: Opsi untuk menjalankan script.${r}"
-	echo -e "${h}--update        ${p}: Opsi untuk memperbarui script.${r}"
-	echo -e "${h}--version       ${p}: Opsi untuk menampilkan versi script."
-	echo -e "${h}--cracked-file  ${p}: Opsi untuk menampilkan seluruh file ZIP yang berhasil dicrack.${r}"
-	echo -e "${h}--uninstall     ${p}: Opsi untuk menguninstal script.${r}"
-	echo -e "${h}--help          ${p}: Opsi untuk menampilkan menu bantuan.${r}"
-	echo ""
-	exit 1
-}
-
-if [[ $# -eq 1 ]]; then
-	if [[ $1 != "--run" && $1 != "--update" && $1 != "--version" && $1 != "--cracked-file" && $1 != "--uninstall" && $1 != "--help" ]]; then
-		help
-	fi
-	cek_root
-	cek_os
-	cek_alat
-	if [[ $1 == "--run" ]]; then
-		# run script (DONE)
-		clear
-		banner_script
-		masukkan_file_zip
-		cek_jumlah_isi_file_zip
-		cek_metode_kompresi
-		cek_enkripsi_file_zip
-		pilih_teknik_crack_file_zip
-		crack_file_zip
-	elif [[ $1 == "--version" ]]; then
-		echo -e "${p}${script} ${versi}${r}"
-		exit 0
-	elif [[ $1 == "--update" ]]; then
-		banner_update
-		echo -e "${p}[${b}*${p}] Memperbarui ZPCT...${r}"
-
-		status_update=()
-
-		list_tools=(
-			"john"
-			"hashcat"
-			"fcrackzip"
-			"lsb-release"
-			"unzip"
-			"p7zip-full"
-			"csvkit"
-		)
-
-		for update in "${list_tools[@]}"; do
-			apt-get install --only-upgrade "${update}"
-			if [[ $? -ne 0 ]]; then
-				status_update+=("gagal")
-			fi
-		done
-
-		if [[ "${#status_update[@]}" -eq 0 ]]; then
-			echo -e "${p}[${h}+${p}] ZPCT berhasil diperbarui.${r}"
-			exit 0
-		else
-			echo -e "${p}[${m}-${p}] ZPCT gagal diperbarui${r}"
-			exit 1
-		fi
-	elif [[ $1 == "--cracked-file" ]]; then
-		file_cracked="/opt/zpct/hasil_cracking/cracked.csv"
-		if [[ ! -f "${file_cracked}" ]]; then
-			echo -e "${p}[${m}-${p}] File '${file_cracked}' tidak ditemukan.${r}"
-			exit 1
-		else
-			csvlook --no-inference "${file_cracked}"
-			exit 0
-		fi
-	elif [[ $1 == "--uninstall" ]]; then
-		path_files=/usr/local/bin
-		list_tools=(
-			"bkcrack"
-			"combinator"
-			"princeprocessor"
-			"toggle-case"
-			"zip2hashcat"
-			"zpct"
-		)
-
-		status_uninstall=()
-
-		for uninstall_tools in "${list_tools[@]}"; do
-			if [[ -f "${path_files}/${uninstall_tools}" ]]; then
-				rm "${path_files}/${uninstall_tools}"
-			else
-				status_uninstall+=("gagal")
-			fi
-		done
-
-		rm -rf "/opt/zpct"
-
-		if [[ $? -ne 0 ]]; then
-			status_uninstall+=("gagal")
-		fi
-
-		if [[ "${#status_uninstall[@]}" -eq 0 ]]; then
-			echo -e "${p}[${h}+${p}] ZPCT berhasil diuninstal.${r}"
-			exit 0
-		else
-			echo -e "${p}[${m}-${p}] ZPCT gagal diuninstal.${r}"
-			exit 1
-		fi
-	elif [[ $1 == "--help" ]]; then
-		help
-	fi
-else
-	help
-fi
+# main script
+cek_root
+cek_os
+cek_alat
+banner_script
+masukkan_file_zip
+cek_jumlah_isi_file_zip
+pilih_teknik_crack_file_zip
+crack_file_zip
 
 # Dibuat dengan ❤️ dan juga ☕
 # Happy Cracking ^_^
