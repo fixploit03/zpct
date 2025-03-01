@@ -75,7 +75,7 @@ Terima kasih kepada komunitas open-source yang telah mengembangkan alat-alat ini
 
 ## Lisensi
 
-Dilisensikan dibawah [Lisensi MIT]().
+Dilisensikan dibawah [Lisensi MIT](https://github.com/fixploit03/zpct/blob/main/LICENSE).
 
 ## Kontribusi
 
