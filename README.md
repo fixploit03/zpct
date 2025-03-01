@@ -1,6 +1,6 @@
 # ZPCT
 
-`ZPCT` (ZIP Password Cracker Tool) adalah script Bash sederhana yang dirancang untuk mengcrack file ZIP.
+`ZPCT` (ZIP Password Cracker Tool) adalah script Bash sederhana yang dirancang untuk mengcrack kata sandi file ZIP.
 
 ## Fitur
 
