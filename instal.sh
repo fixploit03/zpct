@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Fungsi untuk mengecek root
+# Fungsi untuk mengecek root (DONE) *
 function cek_root(){
 	if [[ $EUID -ne 0 ]]; then
 		echo "[-] Script ini harus dijalankan sebagai rooi."
@@ -8,7 +8,7 @@ function cek_root(){
 	fi
 }
 
-# Fungsi untuk mengonfirmasi
+# Fungsi untuk mengonfirmasi (DONE) *
 function konfirmasi(){
 	while true; do
 		read -r -p "[#] Apakah Anda ingin menginstal zpct [Y/n]: " nanya
@@ -24,7 +24,7 @@ function konfirmasi(){
 	done
 }
 
-# Fungsi untuk mengecek koneksi internet
+# Fungsi untuk mengecek koneksi internet (DONE) *
 function cek_koneksi_internet(){
 	if ! ping -c 4 google.com; then
 		echo "[-] Anda tidak memiliki koneksi internet."
@@ -34,7 +34,7 @@ function cek_koneksi_internet(){
 
 gagal=()
 
-# Fungsi untuk menginstal dependesi yang diperlukan
+# Fungsi untuk menginstal dependesi yang diperlukan (DONE) *
 function instal_dependensi(){
 	daftar_dependensi=(
 		"john"
@@ -57,7 +57,6 @@ function instal_dependensi(){
 		"cmake"
                 "g++"
 		"mingw-w64"
-		"csvkit"
 	)
 
 	apt-get update
@@ -75,7 +74,7 @@ function instal_dependensi(){
 	done
 }
 
-# Fungsi untuk menginstal alat-alat yang diperlukan
+# Fungsi untuk menginstal alat-alat yang diperlukan (DONE) *
 function instal_tools(){
 	daftar_tools=(
 		"fixploit03/zpct"
@@ -133,6 +132,7 @@ function instal_tools(){
 	done
 }
 
+# Fungsi untuk mendownload wordlist rockyou (DONE) *
 function download_rockyou(){
 	url_rockyou="https://github.com/praetorian-inc/Hob0Rules/raw/refs/heads/master/wordlists/rockyou.txt.gz"
 	folder_wordlist="wordlists"
@@ -161,7 +161,7 @@ function download_rockyou(){
 	cd ..
 }
 
-# Fungsi untuk menginstal zpct
+# Fungsi untuk menginstal zpct (DONE) *
 function cek_status_instal_zpct(){
 
 	if [[ "${#gagal[@]}" -eq 0 ]]; then
@@ -182,4 +182,3 @@ instal_dependensi
 instal_tools
 download_rockyou
 cek_status_instal_zpct
-
