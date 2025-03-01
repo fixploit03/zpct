@@ -1,4 +1,23 @@
 #!/bin/bash
+#--------------------------------------------
+#...............: instal.sh
+#...............: Script installer ZPCT.
+#...............: v2.5
+#...............: Rofi (Fixploit03)
+#...............: https://github.com/fixploit03/zpct
+#
+#---------------- DISCLAIMER ----------------
+#
+# Script ini saya buat hanya untuk tujuan edukasi dan pembelajaran saja, tidak
+# ada niatan untuk mendorong atau mempromosikan kegiatan yang melanggar hukum!.
+# Gunakan script ini dengan bijak, gunakan hanya pada file ZIP yang Anda miliki,
+# jangan gunakan script ini untuk membobol/mengcrack file ZIP orang lain.
+#
+#--------------------------------------------
+#
+# Script ini 100% Free alias Gratis (Open Source)
+#
+#--------------------------------------------
 
 # Fungsi untuk mengecek root (DONE) *
 function cek_root(){
