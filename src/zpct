@@ -18,6 +18,15 @@
 # Script ini 100% Free alias Gratis (Open Source)
 #
 #--------------------------------------------
+#
+# Terima kasih kepada komunitas open-source yang telah mengembangkan alat-alat keren ini:
+#
+# - Fcrackzip       (http://oldhome.schmorp.de/marc/fcrackzip.html)
+# - John The Ripper (https://github.com/openwall/john)
+# - Hashcat         (https://github.com/hashcat/hashcat)
+# - Bkcrack         (https://github.com/kimci86/bkcrack)
+# 
+#--------------------------------------------
 
 # Variabel warna
 m="\e[0;31m" # Merah
